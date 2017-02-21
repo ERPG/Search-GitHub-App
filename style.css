@@ -1,0 +1,89 @@
+.firstContainer{
+margin-left: 100px;
+padding-right: 100px;
+}
+
+.mainHeader {
+	display: flex;
+	background-color: #f1e05a;
+	align-items: center;
+	border: 2px solid black;
+
+}
+
+.headerContainer {
+	display: flex;
+	margin: 0 auto;
+}
+
+header img {
+	width: 140px;
+	height: 120px;
+
+}
+
+
+h1 {
+	font-family: verdana;
+}
+
+h1 > img {
+	width: 150px;
+	height: 70px;
+
+}
+
+/*--------------------second section---------------------*/
+section > img {
+	margin-top: 15px;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}
+
+div > p {
+	text-align: center;
+	border-bottom: 3px solid;
+	font-family: Verdana;
+	margin-left: 40px;
+}
+
+.sectionCont {
+	background-color: #eeeeee;
+	padding:10px;
+}
+
+.sectionCont form {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.sectionCont ul li {
+	list-style: none;
+	font-family: Verdana;
+	margin: 5px;
+	border-bottom: 1px solid grey;
+}
+
+.outputSection {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;;
+}
+
+
+/*--------------------third section---------------------*/
+.footer {
+	background-color: black;
+	font-family: Verdana;
+	height: 30px;
+}
+
+.footer p {
+	font-family: Verdana;
+	color: white;
+	margin-top: 0;
+	font-size: 10px;
+	margin-left: 5px;
+
+}

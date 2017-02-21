@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My demo Github project</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="firstContainer">
+        <header class="mainHeader">
+            <div class="headerContainer">
+                <img src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png">
+                <h1>Search <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png"> APP</h1>
+            </div>
+        </header>
+        <section class="sectionCont">
+            <form action="" id="request">
+                <input type="" name="search" placeholder="Search username...">
+                <button>Search</button>
+            </form>
+            <div id="error"></div>
+            <section class="outputSection">
+                <img id="usersImg" src="https://image.freepik.com/iconos-gratis/github-silueta-caracter_318-40485.jpg">
+                <div class="hidden">
+                    <p class="hidden" id="repository"></p>
+                    <ul id="list"></ul>
+                </div>
+            </section>
+        </section>
+        <footer class="footer">
+            <p>Created by Me! © 2017 GitHub APP, Inc</p>
+        </footer>
+    </div>
+    <script type="text/javascript">
+    var form = document.querySelector('#request')
+    var searchInput = document.getElementsByName('search')[0]
+
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault()
+        var searchValue = searchInput.value
+        var url = `https://api.github.com/users/${searchValue}/repos`
+        fetch(url)
+            .then(function(response) {
+                e
+                return response.json()
+            })
+            .then(reposList)
+            .catch(logError)
+    })
+
+
+    function reposList(onlist) {
+        var repos = onlist.map(function(elem) {
+            return `<li>${ elem.name }</li>`
+        }).join('')
+        document.getElementById('list').innerHTML = repos
+
+        var imgUrl = onlist[0].owner.avatar_url
+        console.log(imgUrl)
+        document.getElementById('usersImg').src = imgUrl
+
+        var nameRepo = 'Repositories'
+        document.getElementById('repository').innerHTML = nameRepo
+    }
+
+
+    function logError() {
+        var sendErr = '<p>' + 'User does not exist' + '</p>'
+        document.getElementById('error').innerHTML = sendErr
+    }
+    </script>
+</body>
+
+</html>
+<!-- Search users:
+https://api.github.com/users/{user} -->
+<!-- ({ repos }) => repos_url -->
