@@ -16,15 +16,25 @@
             </div>
         </header>
         <section class="sectionCont">
-            <form action="" id="request">
-                <input type="" name="search" placeholder="Search username...">
-                <button>Search</button>
-            </form>
-            <div id="error"></div>
-            <section class="outputSection">
-                <img id="usersImg" src="https://image.freepik.com/iconos-gratis/github-silueta-caracter_318-40485.jpg">
-                <div class="hidden">
-                    <p class="hidden" id="repository"></p>
+            <div class="">
+                <form action="" id="request">
+                    <input type="" name="search" placeholder="Search username...">
+                    <button>Search</button>
+                </form>
+                <div class="hidden" id="error">
+                </div>
+            </div>
+            <section id="userContainer" class="">
+                <section class="outputSection container">
+                    <img id="usersImg" src="https://image.freepik.com/iconos-gratis/github-silueta-caracter_318-40485.jpg">
+                    <div>
+                        <h3 id="fullname"></h3>
+                        <p id="userInfo"></p>
+                        <p id="bio"></p>
+                    </div>
+                </section>
+                <div class="repos">
+                    <h4 id="repository"></h4>
                     <ul id="list"></ul>
                 </div>
             </section>
@@ -33,48 +43,7 @@
             <p>Created by Me! © 2017 GitHub APP, Inc</p>
         </footer>
     </div>
-    <script type="text/javascript">
-    var form = document.querySelector('#request')
-    var searchInput = document.getElementsByName('search')[0]
-
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault()
-        var searchValue = searchInput.value
-        var url = `https://api.github.com/users/${searchValue}/repos`
-        fetch(url)
-            .then(function(response) {
-                e
-                return response.json()
-            })
-            .then(reposList)
-            .catch(logError)
-    })
-
-
-    function reposList(onlist) {
-        var repos = onlist.map(function(elem) {
-            return `<li>${ elem.name }</li>`
-        }).join('')
-        document.getElementById('list').innerHTML = repos
-
-        var imgUrl = onlist[0].owner.avatar_url
-        console.log(imgUrl)
-        document.getElementById('usersImg').src = imgUrl
-
-        var nameRepo = 'Repositories'
-        document.getElementById('repository').innerHTML = nameRepo
-    }
-
-
-    function logError() {
-        var sendErr = '<p>' + 'User does not exist' + '</p>'
-        document.getElementById('error').innerHTML = sendErr
-    }
-    </script>
+    <script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>
-<!-- Search users:
-https://api.github.com/users/{user} -->
-<!-- ({ repos }) => repos_url -->
